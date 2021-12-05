@@ -12,7 +12,7 @@
 
 (use-package! clojure-mode
   :hook (clojure-mode . rainbow-delimiters-mode))
-
+(use-package! inf-clojure)
 (use-package! flycheck-clj-kondo
   :when (featurep! :checkers syntax)
   :after flycheck)
