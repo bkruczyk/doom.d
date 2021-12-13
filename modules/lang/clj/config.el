@@ -1,5 +1,6 @@
 ;;; lang/clj/config.el -*- lexical-binding: t; -*-
 
+
 (after! projectile
   (pushnew! projectile-project-root-files "project.clj" "build.boot" "deps.edn"))
 
@@ -10,9 +11,13 @@
 ;;
 ;;; Packages
 
-(use-package! clojure-mode
-  :hook (clojure-mode . rainbow-delimiters-mode))
 (use-package! inf-clojure)
+(use-package! clojure-mode
+  :hook (clojure-mode . rainbow-delimiters-mode)
+  :config
+  (set-repl-handler! 'clojure-mode #'inf-clojure :persist t)
+  (set-repl-handler! 'clojurescript-mode #'inf-clojure :persist t)
+  (set-eval-handler! '(clojure-mode clojurescript-mode) #'inf-clojure-eval-region))
 (use-package! flycheck-clj-kondo
   :when (featurep! :checkers syntax)
   :after flycheck)
