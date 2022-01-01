@@ -52,7 +52,7 @@
        ;;zen               ; distraction-free coding or writing
 
        :editor
-       (evil +everywhere); come to the dark side, we have cookies
+       evil              ; come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        fold              ; (nigh) universal code folding
        ;;(format +onsave)  ; automated prettiness
@@ -62,15 +62,15 @@
        ;;objed             ; text object editing for the innocent
        ;;parinfer          ; turn lisp into python, sort of
        ;;rotate-text       ; cycle region at point between text candidates
-       snippets          ; my elves. They type so I don't have to
+       ;;snippets          ; my elves. They type so I don't have to
        ;;word-wrap         ; soft wrapping with language-aware indent
        paredit             ; lisp structural editing
 
        :emacs
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
-       ;;ibuffer         ; interactive buffer management
-       undo              ; persistent, smarter undo for your inevitable mistakes
+       ibuffer         ; interactive buffer management
+       ;;undo              ; persistent, smarter undo for your inevitable mistakes
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
@@ -151,7 +151,10 @@
        ;;nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
        ;;ocaml             ; an objective camel
-       org               ; organize your plain life in plain text
+       (org
+        +pandoc
+        +hugo
+        +journal)          ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
