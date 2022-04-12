@@ -2,11 +2,20 @@
 
 ;;; Notes
 
-;; M-m back-to-indentation!
+;; M-m   back-to-indentation!
+;; _     does the same in Vim normal mode
 
 ;;; doom
-(setq doom-font (font-spec :family "JetBrains Mono" :size 15))
-(setq doom-theme 'doom-one)
+(setq doom-font (font-spec :family "Roboto Mono" :size 14))
+(setq doom-theme 'doom-solarized-dark-high-contrast)
+(setq doom-themes-enable-bold nil)
+(setq doom-themes-enable-italic nil)
+
+;;; decent settings for non doom themes like modus-operandi and modus vivendi
+(doom-themes-set-faces nil
+  '(fringe :background nil)
+  '(line-number :background nil)
+  '(line-number-current-line :inherit 'hl-line :background nil))
 
 ;;; org-mode
 (setq org-directory "~/org/")
