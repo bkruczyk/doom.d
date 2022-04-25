@@ -11,12 +11,13 @@
 ;;
 ;;; Packages
 
-(use-package! inf-clojure)
+(use-package! inf-clojure
+  :hook (inf-clojure-mode . rainbow-delimiters-mode))
 (use-package! clojure-mode
   :hook (clojure-mode . rainbow-delimiters-mode)
   :config
   (set-repl-handler! 'clojure-mode #'+clojure/repl :persist t)
-  (set-repl-handler! 'clojurescript-mode #'inf-clojure :persist t)
+  (set-repl-handler! 'clojurescript-mode #'+clojure/repl :persist t)
   (set-eval-handler! '(clojure-mode clojurescript-mode) #'inf-clojure-eval-region))
 (use-package! flycheck-clj-kondo
   :when (featurep! :checkers syntax)

@@ -3,22 +3,22 @@
 
 ;;;###autoload
 (defun +clojure/repl (&optional classpath)
-  "Starts plain Clojure REPL with inf-clojure, possibly using project's classpath."
+  "Starts REPL with inf-clojure, possibly for the project."
   (interactive "P")
   (setq-local inf-clojure-custom-repl-type 'clojure)
   (cond ((consp classpath)
          (inf-clojure "clojure"))
         ((stringp classpath)
          (inf-clojure (format "clojure -Scp %s" classpath)))
-        (t (inf-clojure (+clojure/proc-with-classpath-maybe)))))
+        (t (inf-clojure (+clojure/project-repl)))))
 
 ;;;###autoload
-(defun +clojure/proc-with-classpath-maybe ()
-  "Return Clojure process command, possibly including classpath if started from Lein project."
-  (let ((cp (shell-command-to-string "lein classpath")))
-    (if (string-match-p (regexp-quote "Couldn't find project.clj, which is needed for classpath") cp)
-        "clojure"
-      (format "clojure -Scp %s" cp))))
+(defun +clojure/project-repl ()
+  "Run REPL for the project, depending on projectile-project-type."
+  (let ((project-type (symbol-name (projectile-project-type))))
+    (if (string-match-p "lein.*" project-type)
+        "lein repl"
+      "clojure")))
 
 ;;;###autoload
 (defun +clojure/socket-repl (&optional port)
