@@ -1,7 +1,13 @@
 ;;; paredit/config.el -*- lexical-binding: t; -*-
 
 (use-package! paredit
+  :hook ((lisp-mode . paredit-mode)
+         (emacs-lisp-mode . paredit-mode)
+         (clojure-mode . paredit-mode)
+         (inf-clojure . paredit-mode)
+         (racket-mode . paredit-mode))
   :config
+  (add-hook 'paredit-mode-hook #'turn-off-smartparens-mode)
   (after! evil
     (map! :map paredit-mode-map :i "C-h" #'paredit-backward-delete)
     (map! :map paredit-mode-map :i "C-w" #'paredit-backward-kill-word)

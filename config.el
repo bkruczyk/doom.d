@@ -19,10 +19,3 @@
 (map! :n "[p" #'evil-collection-unimpaired-paste-above)
 
 (setq +evil-want-o/O-to-continue-comments nil)
-
-;;; paredit
-(when (featurep! :editor paredit)
-  (add-hook! 'emacs-lisp-mode-hook   #'enable-paredit-mode)
-  (add-hook! 'racket-mode-hook       #'enable-paredit-mode)
-  (add-hook! 'clojure-mode-hook      #'enable-paredit-mode)
-  (add-hook! 'inf-clojure-mode-hook  #'enable-paredit-mode))
