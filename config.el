@@ -5,8 +5,8 @@
 ;; M-m back-to-indentation!
 
 ;;; doom
-(setq doom-font (font-spec :family "PT Mono" :size 14))
-(setq doom-theme 'doom-one-light)
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15))
+(setq doom-theme 'doom-one)
 
 ;;; org-mode
 (setq org-directory "~/org/")
