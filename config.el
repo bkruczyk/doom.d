@@ -12,16 +12,19 @@
 ;; goal-column
 ;;
 ;; Vim
-;; _      | does the same in Vim normal mode
+;; _      | back to indentation
 ;; g;     | (Vim) jump to the place of last edit
+;; C-r /  | paste last search pattern in insert mode
+;; q /    | show last searches
+;; [m ]m  | move to prev/next method
 
 ;;; doom
-(setq doom-font (font-spec :family "JetBrains Mono" :size 12))
-(setq doom-theme 'doom-solarized-dark-high-contrast)
+(setq doom-font (font-spec :family "Monaco" :size 12))
+(setq doom-theme 'doom-one-light)
 (setq doom-themes-enable-bold nil)
 (setq doom-themes-enable-italic nil)
 
-(map! :nvi "s-<return>" #'toggle-frame-maximized)
+(global-set-key (kbd "<M-return>") #'toggle-frame-maximized)
 
 ;;; decent settings for non-doom themes like modus-operandi and modus-vivendi
 (doom-themes-set-faces nil
@@ -35,7 +38,7 @@
 
 ;;; evil
 (map! :i "C-h" #'evil-delete-backward-char)
-(map! :i "C-k" #'kill-line)
+(map! :i "C-k" #'kill-line) ;; originally "enter digram" in Vim
 (map! :n "]p" #'evil-collection-unimpaired-paste-below)
 (map! :n "[p" #'evil-collection-unimpaired-paste-above)
 

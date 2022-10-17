@@ -20,5 +20,5 @@
   (set-repl-handler! 'clojurescript-mode #'+clojure/repl :persist t)
   (set-eval-handler! '(clojure-mode clojurescript-mode) #'inf-clojure-eval-region))
 (use-package! flycheck-clj-kondo
-  :when (featurep! :checkers syntax)
+  :when (modulep! :checkers syntax)
   :after flycheck)
